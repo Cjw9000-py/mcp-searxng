@@ -11,4 +11,4 @@ ENV SEARXNG_URL=http://172.17.0.1:2013
 
 USER 1000
 
-CMD ["python", "mcp-searxng.py"]
+CMD ["python", "mcp-searxng.py", "-b", "0.0.0.0", "-p", "8000"]

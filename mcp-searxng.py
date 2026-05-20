@@ -6,11 +6,20 @@ import httpx
 from attrs import define, field
 from loguru import logger as log
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
 
 SEARXNG_URL = os.environ.get('SEARXNG_URL', 'http://172.17.0.1:2013')
 TIMEOUT = int(os.environ.get('HTTP_TIMEOUT', '15'))
 
-mcp = FastMCP('searxng-mcp', json_response=True)
+mcp = FastMCP(
+    'searxng-mcp',
+    json_response=True,
+    transport_security=TransportSecuritySettings(
+        enable_dns_rebinding_protection=False,
+        allowed_hosts=["*"],
+        allowed_origins=["*"],
+    )
+)
 
 
 @define
