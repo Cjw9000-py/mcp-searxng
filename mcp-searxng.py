@@ -165,13 +165,21 @@ async def http_request(
 
 
 def main() -> None:
-    host = os.environ.get('MCP_HOST', '127.0.0.1')
-    port = int(os.environ.get('MCP_PORT', '8000'))
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description='SearxNG MCP server (HTTP transport)',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument('--host', default='127.0.0.1', help='host to bind')
+    parser.add_argument('-p', '--port', type=int, default=8000, help='port to bind')
+    args = parser.parse_args()
+
     log.info(
         'starting {name} on http://{host}:{port} (searxng={url}, timeout={t}s)',
         name=mcp.name,
-        host=host,
-        port=port,
+        host=args.host,
+        port=args.port,
         url=SEARXNG_URL,
         t=TIMEOUT,
     )
@@ -179,8 +187,8 @@ def main() -> None:
 
     uvicorn.run(
         mcp.streamable_http_app(),
-        host=host,
-        port=port,
+        host=args.host,
+        port=args.port,
         log_level='info',
     )
 

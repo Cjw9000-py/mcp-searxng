@@ -23,11 +23,15 @@ uv run python mcp-searxng.py
 
 Serves on `http://127.0.0.1:8000` by default.
 
+## CLI
+
+```
+uv run python mcp-searxng.py --host 0.0.0.0 --port 9000
+```
+
 ## Configuration
 
 | Env var | Default | Description |
 | --- | --- | --- |
 | `SEARXNG_URL` | `http://172.17.0.1:2013` | SearxNG instance URL |
 | `HTTP_TIMEOUT` | `15` | HTTP request timeout in seconds |
-| `MCP_HOST` | `127.0.0.1` | Host to bind MCP HTTP server |
-| `MCP_PORT` | `8000` | Port to bind MCP HTTP server |
