@@ -1,0 +1,15 @@
+[Unit]
+Description=SearxNG MCP Server
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/workspace/mcp-searxng
+Environment=SEARXNG_URL=http://172.19.0.1:2013
+ExecStart=/workspace/mcp-searxng/.venv/bin/python -m mcp_searxng
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
