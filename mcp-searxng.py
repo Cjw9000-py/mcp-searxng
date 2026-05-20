@@ -164,5 +164,15 @@ async def http_request(
         raise RuntimeError(f'request failed: {e}') from e
 
 
-if __name__ == '__main__':
+def main() -> None:
+    log.info(
+        'starting {name} on {url} (timeout={t}s)',
+        name=mcp.name,
+        url=SEARXNG_URL,
+        t=TIMEOUT,
+    )
     mcp.run()
+
+
+if __name__ == '__main__':
+    main()
