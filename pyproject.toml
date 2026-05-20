@@ -10,6 +10,7 @@ dependencies = [
     "loguru>=0.7.3",
     "mcp>=1.27.1",
     "rich>=15.0.0",
+    "uvicorn>=0.47.0",
 ]
 
 [tool.pytest.ini_options]

@@ -324,6 +324,7 @@ dependencies = [
     { name = "loguru" },
     { name = "mcp" },
     { name = "rich" },
+    { name = "uvicorn" },
 ]
 
 [package.dev-dependencies]
@@ -339,6 +340,7 @@ requires-dist = [
     { name = "loguru", specifier = ">=0.7.3" },
     { name = "mcp", specifier = ">=1.27.1" },
     { name = "rich", specifier = ">=15.0.0" },
+    { name = "uvicorn", specifier = ">=0.47.0" },
 ]
 
 [package.metadata.requires-dev]

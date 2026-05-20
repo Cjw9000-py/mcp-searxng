@@ -165,13 +165,24 @@ async def http_request(
 
 
 def main() -> None:
+    host = os.environ.get('MCP_HOST', '127.0.0.1')
+    port = int(os.environ.get('MCP_PORT', '8000'))
     log.info(
-        'starting {name} on {url} (timeout={t}s)',
+        'starting {name} on http://{host}:{port} (searxng={url}, timeout={t}s)',
         name=mcp.name,
+        host=host,
+        port=port,
         url=SEARXNG_URL,
         t=TIMEOUT,
     )
-    mcp.run()
+    import uvicorn
+
+    uvicorn.run(
+        mcp.streamable_http_app(),
+        host=host,
+        port=port,
+        log_level='info',
+    )
 
 
 if __name__ == '__main__':
