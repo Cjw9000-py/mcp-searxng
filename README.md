@@ -26,7 +26,7 @@ Serves on `http://127.0.0.1:8000` by default.
 ## CLI
 
 ```
-uv run python mcp-searxng.py --host 0.0.0.0 --port 9000
+uv run python mcp-searxng.py -b 0.0.0.0 -p 9000
 ```
 
 ## Configuration

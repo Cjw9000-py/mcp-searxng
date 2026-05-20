@@ -7,7 +7,7 @@ Type=simple
 User=ubuntu
 WorkingDirectory=/workspace/mcp-searxng
 Environment=SEARXNG_URL=http://172.17.0.1:2013
-ExecStart=/workspace/mcp-searxng/.venv/bin/python mcp-searxng.py --host 0.0.0.0 --port 8000
+ExecStart=/workspace/mcp-searxng/.venv/bin/python mcp-searxng.py -b 0.0.0.0 -p 8000
 Restart=on-failure
 RestartSec=5
 
