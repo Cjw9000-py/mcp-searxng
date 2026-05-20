@@ -9,11 +9,10 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 
-COPY src/ ./src/
-RUN uv sync --frozen
+COPY mcp-searxng.py .
 
-ENV SEARXNG_URL=http://172.19.0.1:2013
+ENV SEARXNG_URL=http://172.17.0.1:2013
 
 USER 1000
 
-CMD ["uv", "run", "python", "-m", "mcp_searxng"]
+CMD ["uv", "run", "python", "mcp-searxng.py"]

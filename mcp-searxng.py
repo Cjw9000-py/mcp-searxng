@@ -7,7 +7,7 @@ from attrs import define, field
 from loguru import logger as log
 from mcp.server.fastmcp import FastMCP
 
-SEARXNG_URL = os.environ.get('SEARXNG_URL', 'http://172.19.0.1:2013')
+SEARXNG_URL = os.environ.get('SEARXNG_URL', 'http://172.17.0.1:2013')
 TIMEOUT = int(os.environ.get('HTTP_TIMEOUT', '15'))
 
 mcp = FastMCP('searxng-mcp', json_response=True)
@@ -162,3 +162,7 @@ async def http_request(
         return await client.request(method.upper(), url, headers=headers, body=body)
     except httpx.RequestError as e:
         raise RuntimeError(f'request failed: {e}') from e
+
+
+if __name__ == '__main__':
+    mcp.run()

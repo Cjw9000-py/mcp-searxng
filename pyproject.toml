@@ -12,14 +12,7 @@ dependencies = [
     "rich>=15.0.0",
 ]
 
-[tool.uv]
-package = true
-
-[project.scripts]
-mcp-searxng = "mcp_searxng.server:mcp.run"
-
 [tool.pytest.ini_options]
-pythonpath = ["src"]
 asyncio_mode = "auto"
 
 [dependency-groups]

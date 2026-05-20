@@ -18,12 +18,12 @@ uv run pytest
 ## Run
 
 ```bash
-uv run python -m mcp_searxng
+uv run python mcp-searxng.py
 ```
 
 ## Configuration
 
 | Env var | Default | Description |
 | --- | --- | --- |
-| `SEARXNG_URL` | `http://172.19.0.1:2013` | SearxNG instance URL |
+| `SEARXNG_URL` | `http://172.17.0.1:2013` | SearxNG instance URL |
 | `HTTP_TIMEOUT` | `15` | HTTP request timeout in seconds |

@@ -1,6 +1,27 @@
+import importlib
+import os
+import sys
+from pathlib import Path
+
 import pytest
-import httpx
-from mcp_searxng.server import search, fetch_url, http_request
+
+_here = Path(__file__).resolve().parent
+_script = _here.parent / 'mcp-searxng.py'
+
+_spec = importlib.util.spec_from_file_location('mcp_searxng_script', _script)
+_m = importlib.util.module_from_spec(_spec)
+sys.modules['mcp_searxng_script'] = _m
+_spec.loader.exec_module(_m)
+
+search = _m.search
+fetch_url = _m.fetch_url
+http_request = _m.http_request
+
+
+@pytest.fixture(autouse=True)
+def _clear_searxng_env() -> None:
+    """Ensure tests always hit the SearxNG URL set at import time, not overridden."""
+    yield
 
 
 @pytest.mark.asyncio

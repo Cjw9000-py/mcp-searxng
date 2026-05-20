@@ -317,7 +317,7 @@ wheels = [
 [[package]]
 name = "mcp-searxng"
 version = "0.1.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "attrs" },
     { name = "httpx" },

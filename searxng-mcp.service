@@ -6,8 +6,8 @@ After=network.target
 Type=simple
 User=ubuntu
 WorkingDirectory=/workspace/mcp-searxng
-Environment=SEARXNG_URL=http://172.19.0.1:2013
-ExecStart=/workspace/mcp-searxng/.venv/bin/python -m mcp_searxng
+Environment=SEARXNG_URL=http://172.17.0.1:2013
+ExecStart=/workspace/mcp-searxng/.venv/bin/python mcp-searxng.py
 Restart=on-failure
 RestartSec=5
 
